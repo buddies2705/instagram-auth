@@ -10,8 +10,12 @@ mongoose.connect(config.db.uri);
 
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
-
 app.get('/auth', authUser);
+
+app.get('/auth/instagram/callback', authUser);
+
+
+
 
 app.get('/login', function (request, response) {
 	response.redirect(config.instagram.auth_url);
